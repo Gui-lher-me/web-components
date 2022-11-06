@@ -55,30 +55,29 @@ window.customElements.define(
       this.shadowRoot.querySelector("h3").innerText = this.getAttribute("name");
       this.shadowRoot.querySelector("img").src = this.getAttribute("avatar");
 
-      this.btn = this.shadowRoot.querySelector("#toggle-info");
+      this.toggleBtn = this.shadowRoot.querySelector("#toggle-info");
     }
 
     toggleInfo() {
       this.showInfo = !this.showInfo;
 
       const info = this.shadowRoot.querySelector(".info");
-      const toggleBtn = this.shadowRoot.querySelector("#toggle-info");
 
       if (this.showInfo) {
         info.style.display = "block";
-        toggleBtn.innerText = "Hide Info";
+        this.toggleBtn.innerText = "Hide Info";
       } else {
         info.style.display = "none";
-        toggleBtn.innerText = "Show Info";
+        this.toggleBtn.innerText = "Show Info";
       }
     }
 
     connectedCallback() {
-      this.btn.addEventListener("click", this.toggleInfo);
+      this.toggleBtn.addEventListener("click", this.toggleInfo);
     }
 
     disconnectedCallback() {
-      this.btn.removeEventListener("click", this.toggleInfo);
+      this.toggleBtn.removeEventListener("click", this.toggleInfo);
     }
   }
 );
